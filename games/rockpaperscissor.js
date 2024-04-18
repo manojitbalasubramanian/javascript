@@ -1,6 +1,8 @@
 const computerchoicedisplay = document.getElementById("computerchoice")
 const userchoicedisplay = document.getElementById("userchoice")
 const resultdisplay = document.getElementById("result")
+const scoredisplay = document.getElementById("score")
+let resetbtn = document.getElementById("reset")
 
 const possiblechoices = document.querySelectorAll("button")
 
@@ -25,21 +27,35 @@ function generatecomputerchoice(){
     if(randomnum===3){
         computerchoice="scissor"}
 
-    computerchoicedisplay.innerText=computerchoice
+    computerchoicedisplay.innerHTML=computerchoice
 }
 let result
+let score=0
 function getresult(){
     if(userchoice===computerchoice)
-        {result="draw"}
+        {result="draw"
+        score += 0}
     else if(userchoice=="rock" && computerchoice=="paper")
-        {result="win"}
+        {result="win"
+        score += 1}
     else if(userchoice=="paper" && computerchoice=="rock")
-        {result="win"}
+        {result="win"
+        score += 1}
     else if(userchoice=="scissor" && computerchoice=="paper")
-        {result="win"}
+        {result="win"
+        score += 1}
     else  
-        {result="lose"}
-
+        {result="lose"
+        score -= 1}
     resultdisplay.innerHTML = result
+    scoredisplay.innerHTML =score
+}
 
+resetbtn.onclick = () => resetrr()
+function resetrr(){
+console.log("asdfgh")
+computerchoicedisplay.innerHTML=''
+userchoicedisplay.innerHTML=''
+resultdisplay.innerHTML=''
+scoredisplay.innerHTML=''
 }
